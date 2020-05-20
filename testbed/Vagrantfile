@@ -1,0 +1,9 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.hostname = "ros-kinetic"
+  config.vm.provision "shell", run: "always", path: "provisioning.sh"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "ros-kinetic"
+  end
+end
