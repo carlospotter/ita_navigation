@@ -20,6 +20,7 @@ Vagrant and VirtualBox are **mandatory** to use this testbed.
 More info:
 
 [Oracle VirtualBox - Download page](https://virtualbox.org/wiki/Downloads)
+
 [Vagrant - Download page](https://www.vagrantup.com/downloads.html)
 
 ## Reproducing this testbed
