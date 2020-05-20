@@ -9,7 +9,7 @@
 
 ## Pre-requisites (host machine)
 
-This tested was made and tested in a host machine with the following configuration:
+This testbed was tested in a host machine with the following configuration:
 
 - Ubuntu 18.04 (bionic)
 - Vagrant 2.2.7 
