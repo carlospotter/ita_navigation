@@ -15,7 +15,7 @@ This testbed was tested in a host machine with the following configuration:
 - Vagrant 2.2.7 
 - Oracle VirtualBox 6.1
 
-Vagrant and VirtualBox are **mandatory** to use this testbed.
+Vagrant and VirtualBox are **mandatory** to use this testbed (Linux, Windows and MacOS).
 
 More info:
 
