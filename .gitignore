@@ -1,6 +1,3 @@
 *.log
-<<<<<<< HEAD
 *.pyc
-=======
 testbed/.vagrant
->>>>>>> sh scripts
