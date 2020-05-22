@@ -6,6 +6,8 @@ apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BAD
 apt-get update -y
 apt-get install ros-kinetic-desktop-full -y
 apt-get install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential -y
-apt-get install python-rosdep -y
-rosdep init
-rosdep update
+apt-get install python-rosdep python-catkin-tools -y
+
+# tum_simulator dependencies
+# github.com/angelsantamaria/tum_simulator
+apt-get install ros-kinetic-hector-* ros-kinetic-ardrone-autonomy -y
