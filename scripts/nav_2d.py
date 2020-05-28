@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
 
     start_point = (20,20)
-    end_point = (39,39)
+    end_point = (39,20)
     initial_height = 55 
     i = 0
     min_cost = None
@@ -43,24 +43,27 @@ if __name__ == '__main__':
     drone_route = []
     print(min_result)
     n_nodes = len(min_result)
-    drone_orient = [0] * ( 3 * n_nodes)
+    drone_orient = [0] * ( 3 * (1+n_nodes))
 
     for x in range(n_nodes):
         tup = min_result[x]
-        goal_x = tup[0] * 5 - 97.5      #x position
-        goal_y = tup[1] * (-5) + 97.5   #y position
+        goal_x = tup[1] * 5 - 97.5      #x position
+        goal_y = tup[0] * (-5) + 97.5   #y position
         goal_z = min_height * 10 + 55   #z position
         drone_route.append(goal_x)
         drone_route.append(goal_y)
         drone_route.append(goal_z)
+    
+    stop_x = end_point[1] * 5 - 97.5
+    stop_y = end_point[0] * (-5) + 97.5
+    stop_z = 55  
+
+    drone_route.append(stop_x)
+    drone_route.append(stop_y)
+    drone_route.append(stop_z)
 
     pub_to.publish(Empty())
-    rospy.loginfo("Takeoff!")
-
-    pub_move.publish(False,drone_route,drone_orient,n_nodes,"no_turn")
-    rospy.loginfo("Moving roboto!")
-
-    #pub_land.publish(Empty())
-    #rospy.loginfo("Landing!")
-
+    
+    pub_move.publish(False,drone_route,drone_orient,n_nodes+1,"no_turn")
+    
     rospy.spin()

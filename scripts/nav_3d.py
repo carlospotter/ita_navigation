@@ -25,7 +25,7 @@ if __name__ == '__main__':
     node_map = node_grid_3d(map_pgm)
 
     start_point = (0,20,20)
-    end_point = (0,37,37)
+    end_point = (0,0,0)
 
     result, cost = astar_3d(node_map, start_point, end_point)
 
@@ -36,14 +36,14 @@ if __name__ == '__main__':
     for x in range(n_nodes):
         tup = result[x]
         goal_z = tup[0] * 10 + 55       #z position
-        goal_x = tup[1] * 5 - 97.5      #x position
-        goal_y = tup[2] * (-5) + 97.5   #y position
+        goal_x = tup[2] * 5 - 97.5      #x position
+        goal_y = tup[1] * (-5) + 97.5   #y position
         drone_route.append(goal_x)
         drone_route.append(goal_y)
         drone_route.append(goal_z)
 
-    stop_x = end_point[1] * 5 - 97.5
-    stop_y = end_point[2] * (-5) + 97.5
+    stop_x = end_point[2] * 5 - 97.5
+    stop_y = end_point[1] * (-5) + 97.5
     stop_z = end_point[0] * 10 + 50  
     
     drone_route.append(stop_x)
