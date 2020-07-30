@@ -11,23 +11,23 @@ class NodeGrid:
         self.x_dist = safe_distance
         self.y_dist = safe_distance
         #Considering a 10m flight level separation:
-        self.z_dist = 1 + safe_distance//10
+        self.z_dist = safe_distance//10 # + 1
         self.map_list = map_list
     
     def convert_map(self,map_pgm):
         map_matrix = img.imread(map_pgm)
-        (n_lin, n_col) = map_matrix.shape
+        #(n_lin, n_col) = map_matrix.shape
 
-        final_matrix = numpy.zeros(shape=(n_lin,n_col))
+        #final_matrix = numpy.zeros(shape=(n_lin,n_col))
 
-        for count_v in range(n_lin):
-            for count_h in range(n_col):
-                if map_matrix[count_h, count_v] == [254]:
-                    final_matrix[count_h, count_v] = 0
-                else:
-                    final_matrix[count_h, count_v] = 1
+        #for count_v in range(n_lin):
+        #    for count_h in range(n_col):
+        #        if map_matrix[count_h, count_v] >= [254]:
+        #            final_matrix[count_h, count_v] = 0
+        #        else:
+        #            final_matrix[count_h, count_v] = 1
                 
-        return final_matrix
+        return map_matrix #final_matrix
 
     def node_grid_3d(self):
         z_init_val = 0
@@ -51,7 +51,7 @@ class NodeGrid:
         for z in range(z_lim):
             for y in range(y_lim):
                 for x in range(x_lim):
-                    if node_grid[z,y,x] == 1:
+                    if node_grid[z,y,x] < [254]:
                         x_lower = x - self.x_dist
                         if x_lower < 0:
                             x_lower = 0
