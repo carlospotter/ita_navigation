@@ -29,7 +29,7 @@ def astar_2d(space,start, end):
             optimal_path.reverse()
             return optimal_path, f_cost[end]
             
-        neighbours_current = find_neighbours(current)
+        neighbours_current = find_neighbours(current,space)
 
         for n in neighbours_current:
             if space[n] == 1:
@@ -61,10 +61,10 @@ def manhattan_dist(p1,p2):
     return 5*(p2[0] - p1[0]) + 5*(p2[1] - p1[1])
 '''
 
-def find_neighbours(node):
+def find_neighbours(node,space):
     neighbours=set()
-    x_lim = 39 #numpy.shape(space)[1]
-    y_lim = 39 #numpy.shape(space)[0]
+    x_lim = numpy.shape(space)[1] - 1
+    y_lim = numpy.shape(space)[0] - 1
     for x_move in [1,0,-1]:
         for y_move in [1,0,-1]:
             x_n = node[0] + x_move
@@ -103,7 +103,7 @@ def astar_3d(space,start, end):
             optimal_path.reverse()
             return optimal_path, f_cost[end]
             
-        neighbours_current = find_neighbours_3d(current)
+        neighbours_current = find_neighbours_3d(current,space)
 
         for n in neighbours_current:
             if space[n] == 1:
@@ -136,11 +136,11 @@ def manhattan_dist_3d(p1,p2):
     return 5*(p2[1] - p1[1]) + 5*(p2[2] - p1[2]) + 10*(p2[0]-p1[0])
 '''
 
-def find_neighbours_3d(node):
+def find_neighbours_3d(node,space):
     neighbours=set()
-    x_lim = 39 #numpy.shape(space)[1]
-    y_lim = 39 #numpy.shape(space)[0]
-    z_lim = 6
+    x_lim = numpy.shape(space)[2] - 1
+    y_lim = numpy.shape(space)[1] - 1 
+    z_lim = numpy.shape(space)[0] - 1
     for x_move in [1,0,-1]:
         for y_move in [1,0,-1]:
             for z_move in [1,0,-1]:
