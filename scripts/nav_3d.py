@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from ita_astar import astar_3d
-from node_grid import NodeGrid
+from node_grid import new_grid
 import sys
 import os
 import numpy
@@ -11,7 +11,7 @@ from std_msgs.msg import Empty
 
 if __name__ == '__main__':
 	
-	#Initialize ROS stuff:
+	# Initialize ROS stuff:
 	rospy.init_node('run_3d_node')
 	rospy.loginfo("Start")
 
@@ -19,26 +19,18 @@ if __name__ == '__main__':
 	pub_move = rospy.Publisher('/autopilot_start_cmd', AutoPilotCmd, queue_size=10)
     
 	# Environment representation: 
-	absFilePath = os.path.abspath(__file__)
-	os.chdir(os.path.dirname(absFilePath))
-
-	map_pgm = ["data/map55.pgm", "data/map65.pgm", "data/map75.pgm", "data/map85.pgm", "data/map95.pgm", 
-				"data/map105.pgm", "data/map115.pgm"]
+	run_node = raw_input("Generate a new nodegrid (Y/n)? ")
+	if run_node == 'y' or run_node == 'Y':
+		the_map = new_grid()
+	else: 
+		the_map = numpy.load('saved_map.npy')
 	
-	safety_dist = 5
-	
-	node_grid = NodeGrid(safety_dist,map_pgm)
-	the_map = node_grid.generate_grid()
-
-	text = numpy.array2string(the_map)
-	with open("txt_map.txt",'w') as f:
-		f.write(text)
-
 	# Path planning algorithm:
 	start_point = (0,20,20)
 	end_point = (0,0,0)
 
 	result, cost = astar_3d(the_map, start_point, end_point)
+	print(result)
 
 	drone_route = []
 	n_nodes = len(result)
