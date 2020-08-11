@@ -9,7 +9,6 @@ from nav_msgs.msg import Odometry
 import sys
 import os
 import numpy
-import math
 
 
 def newOdom(msg):
@@ -19,32 +18,38 @@ def newOdom(msg):
     yod = msg.pose.pose.position.y
 
 
-def coordGtoN():
+def coordGtoN(xg, yg):
     # Convert the coordinates from Gazebo to nodegrid
-    sub = rospy.Subscriber("/ground_truth/state", Odometry, newOdom)
-    xst = math.floor((xod + 97.5)/5)
-    yst = math.floor((yod - 97.5)/(-5))
+    xst = int(round((xg + 97.5)/5))
+    yst = int(round((yg - 97.5)/(-5)))
     return (yst, xst)
+
 
 if __name__ == '__main__':
     
     # Initialize ROS stuff
-    rospy.init_node('nav_2d')
+    rospy.init_node('run_2d_node')
     rospy.loginfo("Start")
 
     pub_to = rospy.Publisher('/ardrone/takeoff', Empty, queue_size=1)
     pub_move = rospy.Publisher('/autopilot_start_cmd', AutoPilotCmd, queue_size=1)
+
+    sub = rospy.Subscriber("/ground_truth/state", Odometry, newOdom)
 
     # Environment representation:
     run_node = raw_input("Generate a new nodegrid (Y/n)? ")
     if run_node == 'y' or run_node == 'Y':
         the_map = new_grid()
     else: 
+        absFilePath = os.path.abspath(__file__)
+        os.chdir(os.path.dirname(absFilePath))
         the_map = numpy.load('saved_map.npy')
 
     # Path planning algorithm:
-    start_point = coordGtoN() #(20,20)
-    end_point = (39,39)
+    start_point = coordGtoN(xod,yod)
+    print("Standard landing points (x,y): (-50, 0); (80, -65); (50, 65); (-80,85); (80,20); (-50,-85)")
+    x_end, y_end = input("Insert desired landing point: ")
+    end_point = coordGtoN(x_end,y_end)
     initial_height = 55     # meters
     flight_level_diff = 10  # meters
 
@@ -59,9 +64,8 @@ if __name__ == '__main__':
             min_alt = altitude 
         
     drone_route = []
-    print(min_result)
     n_nodes = len(min_result)
-    drone_orient = [0] * ( 3 * (1+n_nodes))
+    drone_orient = [0] * ( 3 * (2+n_nodes))
 
     # Coordinate conversion (Node grid --> Gazebo environment)
     for x in range(n_nodes):
@@ -75,14 +79,19 @@ if __name__ == '__main__':
     
     stop_x = end_point[1] * 5 - 97.5
     stop_y = end_point[0] * (-5) + 97.5
-    stop_z = 10  
+    stop_z = 5
 
     drone_route.append(stop_x)
     drone_route.append(stop_y)
     drone_route.append(stop_z)
 
+    drone_route.append(stop_x)
+    drone_route.append(stop_y)
+    drone_route.append(0)
+
+    # Route sent to the drone controller
     pub_to.publish(Empty())
-    
-    pub_move.publish(False,drone_route,drone_orient,n_nodes+1,"no_turn")
+
+    pub_move.publish(False,drone_route,drone_orient,n_nodes+2,"no_turn")
     
     rospy.spin()

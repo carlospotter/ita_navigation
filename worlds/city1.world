@@ -96,10 +96,10 @@
         </link>
       </model>
       <model name='unit_box_0_0'>
-        <pose frame=''>-80 85 10 0 0 0</pose>
+        <pose frame=''>-80 85 1 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-80 85 10 -0 0 0</pose>
+          <pose frame=''>-80 85 1 -0 0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0.004709 0.011055 -9.78158 -0.022108 0.009414 1e-06</acceleration>
           <wrench>0.004709 0.011055 -9.78158 0 -0 0</wrench>
@@ -116,10 +116,10 @@
         </link>
       </model>
       <model name='unit_box_0_10'>
-        <pose frame=''>-50 0 25 0 0 0</pose>
+        <pose frame=''>-50 0 1 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-50 0 25 0 0 0</pose>
+          <pose frame=''>-50 0 1 0 0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0.004709 0.011055 -9.78158 -0.022108 0.009414 1e-06</acceleration>
           <wrench>0.004709 0.011055 -9.78158 0 -0 0</wrench>
@@ -186,10 +186,10 @@
         </link>
       </model>
       <model name='unit_box_0_17'>
-        <pose frame=''>-50 -85 5 0 0 0</pose>
+        <pose frame=''>-50 -85 1 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-50 -85 5 0 0 0</pose>
+          <pose frame=''>-50 -85 1 0 0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0.010615 -0.006191 -9.78231 0.012424 0.021225 1.8e-05</acceleration>
           <wrench>0.010615 -0.006191 -9.78231 0 -0 0</wrench>
@@ -406,10 +406,10 @@
         </link>
       </model>
       <model name='unit_box_0_37'>
-        <pose frame=''>50 65 25 0 0 0</pose>
+        <pose frame=''>50 65 1 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>50 65 25 0 0 0</pose>
+          <pose frame=''>50 65 1 0 0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0.010615 -0.006191 -9.78231 0.012424 0.021225 1.8e-05</acceleration>
           <wrench>0.010615 -0.006191 -9.78231 0 -0 0</wrench>
@@ -496,10 +496,10 @@
         </link>
       </model>
       <model name='unit_box_0_45'>
-        <pose frame=''>80 20 10 0 0 0</pose>
+        <pose frame=''>80 20 1 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>80 20 10 0 0 0</pose>
+          <pose frame=''>80 20 1 0 0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0.010615 -0.006191 -9.78231 0.012424 0.021225 1.8e-05</acceleration>
           <wrench>0.010615 -0.006191 -9.78231 0 -0 0</wrench>
@@ -576,10 +576,10 @@
         </link>
       </model>
       <model name='unit_box_0_52'>
-        <pose frame=''>80 -65 15 0 0 0</pose>
+        <pose frame=''>80 -65 1 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>80 -65 15 0 0 0</pose>
+          <pose frame=''>80 -65 1 0 0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0.004709 0.011055 -9.78158 -0.022108 0.009414 1e-06</acceleration>
           <wrench>0.004709 0.011055 -9.78158 0 -0 0</wrench>
@@ -647,7 +647,7 @@
       </camera>
     </gui>
     <model name='unit_box_0_0'>
-      <pose frame=''>-80 85 10 0 0 0</pose>
+      <pose frame=''>-80 85 1 0 0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -663,7 +663,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 20</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -683,12 +683,12 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>20 15 20</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
+              <name>Gazebo/Red</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>
@@ -716,7 +716,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 50</size>
+              <size>20 15 50</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -769,7 +769,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 60</size>
+              <size>20 15 60</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -822,7 +822,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -875,7 +875,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 100</size>
+              <size>20 15 100</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -928,7 +928,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 120</size>
+              <size>20 15 120</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -981,7 +981,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 80</size>
+              <size>20 15 80</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1034,7 +1034,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 20</size>
+              <size>20 15 20</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1086,7 +1086,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 30</size>
+              <size>20 15 30</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1139,7 +1139,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 10</size>
+              <size>20 15 10</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1176,7 +1176,7 @@
       <static>true</static>
     </model>
     <model name='unit_box_0_10'>
-      <pose frame=''>-50 0 25 0 -0 0</pose>
+      <pose frame=''>-50 0 1 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -1192,7 +1192,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 50</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1212,12 +1212,12 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>20 15 50</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
+              <name>Gazebo/Red</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>
@@ -1245,7 +1245,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1298,7 +1298,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 90</size>
+              <size>20 15 90</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1351,7 +1351,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 80</size>
+              <size>20 15 80</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1404,7 +1404,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 60</size>
+              <size>20 15 60</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1457,7 +1457,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 30</size>
+              <size>20 15 30</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1510,7 +1510,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1547,7 +1547,7 @@
       <static>true</static>
     </model>
     <model name='unit_box_0_17'>
-      <pose frame=''>-50 -85 5 0 -0 0</pose>
+      <pose frame=''>-50 -85 1 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -1563,7 +1563,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 10</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1583,12 +1583,12 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>20 15 10</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
+              <name>Gazebo/Red</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>
@@ -1616,7 +1616,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 20</size>
+              <size>20 15 20</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1669,7 +1669,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 70</size>
+              <size>20 15 70</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1722,7 +1722,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 80</size>
+              <size>20 15 80</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1775,7 +1775,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 70</size>
+              <size>20 15 70</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1828,7 +1828,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 70</size>
+              <size>20 15 70</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1881,7 +1881,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 50</size>
+              <size>20 15 50</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1934,7 +1934,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>20 20 100</size>
+              <size>15 15 100</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1987,7 +1987,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>20 20 20</size>
+              <size>15 15 20</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2040,7 +2040,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>20 20 120</size>
+              <size>15 15 120</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2093,7 +2093,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>20 20 30</size>
+              <size>15 15 30</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2146,7 +2146,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>20 20 60</size>
+              <size>15 15 60</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2199,7 +2199,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>20 20 90</size>
+              <size>15 15 90</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2252,7 +2252,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 80</size>
+              <size>20 15 80</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2305,7 +2305,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2358,7 +2358,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 100</size>
+              <size>20 15 100</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2411,7 +2411,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 20</size>
+              <size>20 15 20</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2464,7 +2464,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 30</size>
+              <size>20 15 30</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2517,7 +2517,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 50</size>
+              <size>20 15 50</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2570,7 +2570,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2607,7 +2607,7 @@
       <static>true</static>
     </model>
     <model name='unit_box_0_37'>
-      <pose frame=''>50 65 25 0 -0 0</pose>
+      <pose frame=''>50 65 1 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -2623,7 +2623,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 50</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2643,12 +2643,12 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>20 15 50</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
+              <name>Gazebo/Red</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>
@@ -2676,7 +2676,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2729,7 +2729,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 60</size>
+              <size>20 15 60</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2782,7 +2782,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 80</size>
+              <size>20 15 80</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2835,7 +2835,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2888,7 +2888,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 50</size>
+              <size>20 15 50</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2941,7 +2941,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 20</size>
+              <size>20 15 20</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -2994,7 +2994,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 30</size>
+              <size>20 15 30</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3031,7 +3031,7 @@
       <static>true</static>
     </model>
     <model name='unit_box_0_45'>
-      <pose frame=''>80 20 10 0 -0 0</pose>
+      <pose frame=''>80 20 1 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -3047,7 +3047,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 20</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3067,12 +3067,12 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>20 15 20</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
+              <name>Gazebo/Red</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>
@@ -3100,7 +3100,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 60</size>
+              <size>20 15 60</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3153,7 +3153,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3206,7 +3206,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 50</size>
+              <size>20 15 50</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3259,7 +3259,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 10</size>
+              <size>20 15 10</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3312,7 +3312,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 20</size>
+              <size>20 15 20</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3365,7 +3365,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 30</size>
+              <size>20 15 30</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3402,7 +3402,7 @@
       <static>true</static>
     </model>
     <model name='unit_box_0_52'>
-      <pose frame=''>80 -65 15 0 -0 0</pose>
+      <pose frame=''>80 -65 1 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -3418,7 +3418,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 30</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3438,12 +3438,12 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>20 15 30</size>
+              <size>20 15 2</size>
             </box>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
+              <name>Gazebo/Red</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>
@@ -3471,7 +3471,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>30 20 40</size>
+              <size>20 15 40</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -3507,6 +3507,11 @@
       </link>
       <static>true</static>
     </model>
-	
+    <plugin name='gazebo_occupancy_map' filename='libgazebo_2Dmap_plugin.so'>
+      <map_resolution>1</map_resolution> <!-- in meters, optional, default 0.1 -->
+      <map_z>115</map_z>         <!-- in meters, optional, default 0.3 -->
+      <map_size_x>200</map_size_x>          <!-- in meters, optional, default 10 -->
+      <map_size_y>200</map_size_y>          <!-- in meters, optional, default 10 -->
+    </plugin>
   </world>
 </sdf>
