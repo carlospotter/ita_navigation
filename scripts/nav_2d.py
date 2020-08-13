@@ -37,12 +37,15 @@ if __name__ == '__main__':
     sub = rospy.Subscriber("/ground_truth/state", Odometry, newOdom)
 
     # Environment representation:
+    absFilePath = os.path.abspath(__file__)
+    os.chdir(os.path.dirname(absFilePath))
+    map_pgm = ["data/map55.pgm", "data/map65.pgm", "data/map75.pgm", "data/map85.pgm", "data/map95.pgm", 
+				"data/map105.pgm", "data/map115.pgm"]
+    
     run_node = raw_input("Generate a new nodegrid (Y/n)? ")
     if run_node == 'y' or run_node == 'Y':
-        the_map = new_grid()
+        the_map = new_grid(map_pgm)
     else: 
-        absFilePath = os.path.abspath(__file__)
-        os.chdir(os.path.dirname(absFilePath))
         the_map = numpy.load('saved_map.npy')
 
     # Path planning algorithm:

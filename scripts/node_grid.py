@@ -7,19 +7,15 @@ import numpy
 
 numpy.set_printoptions(threshold=sys.maxsize)
 
-def new_grid():
+def new_grid(map_list):
     safe_distance = input("Define the distance between drone and obstacles (in meters): ") 
     print("Generating nodegrid...")
 
-    absFilePath = os.path.abspath(__file__)
-    os.chdir(os.path.dirname(absFilePath))
-
-    map_pgm = ["data/map55.pgm", "data/map65.pgm", "data/map75.pgm", "data/map85.pgm", "data/map95.pgm", 
-				"data/map105.pgm", "data/map115.pgm"]
-		
-    node_grid = NodeGrid(safe_distance,map_pgm)
+    node_grid = NodeGrid(safe_distance,map_list)
     the_map = node_grid.generate_grid()
 
+    absFilePath = os.path.abspath(__file__)
+    os.chdir(os.path.dirname(absFilePath))
     numpy.save('saved_map.npy', the_map)
 
     return the_map
