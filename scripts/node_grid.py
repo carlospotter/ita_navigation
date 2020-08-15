@@ -11,7 +11,7 @@ def new_grid(map_list):
     safe_distance = input("Define the distance between drone and obstacles (in meters): ") 
     print("Generating nodegrid...")
 
-    node_grid = NodeGrid(safe_distance,map_list)
+    node_grid = NodeGrid(safe_distance,map_list,False)
     the_map = node_grid.generate_grid()
 
     absFilePath = os.path.abspath(__file__)
@@ -21,12 +21,13 @@ def new_grid(map_list):
     return the_map
 
 class NodeGrid:
-    def __init__(self, safe_distance, map_list):
+    def __init__(self, safe_distance, map_list, reduction=True):
         self.x_dist = safe_distance
         self.y_dist = safe_distance
         #Considering a 10m flight level separation:
         self.z_dist = safe_distance//10 # + 1
         self.map_list = map_list
+        self.reduction = reduction
     
     def convert_map(self,map_pgm):
         map_matrix = img.imread(map_pgm)
@@ -86,7 +87,8 @@ class NodeGrid:
                                 for xf in range(x_lower, x_upper+1):
                                     node_map[zf,yf,xf] = 1
         
-        #return node_map
+        if self.reduction == False:
+            return node_map
 
         # Reduction of map scale turning each 1mx1m 
         # square into a 5mx5m square:
