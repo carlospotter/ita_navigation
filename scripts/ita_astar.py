@@ -1,7 +1,7 @@
 #!usr/bin/env python
 import numpy
 
-def astar_2d(space,start,end,eucl=True):
+def astar_2d(space,start,end,eucl=True,xdist=5,ydist=5):
 
     open_nodes = set([start])
     closed_nodes = set()
@@ -9,7 +9,7 @@ def astar_2d(space,start,end,eucl=True):
     path_log = dict()
 
     g_cost = {start:0}
-    f_cost = {start:euclidean_dist(start,end)}
+    f_cost = {start:euclidean_dist(start,end,xdist,ydist)}
 
     while open_nodes:
 
@@ -35,7 +35,7 @@ def astar_2d(space,start,end,eucl=True):
             if space[n] == 1:
                 continue
             if n not in closed_nodes:
-                new_g_cost = g_cost[current] + euclidean_dist(current,n)
+                new_g_cost = g_cost[current] + euclidean_dist(current,n,xdist,ydist)
                 if n not in open_nodes:
                     open_nodes.add(n)
                                                                     
@@ -45,22 +45,22 @@ def astar_2d(space,start,end,eucl=True):
                     
                 g_cost[n] = new_g_cost
                 if eucl == True:
-                    f_cost[n] = g_cost[n] + euclidean_dist(n,end)
+                    f_cost[n] = g_cost[n] + euclidean_dist(n,end,xdist,ydist)
                 else:
-                    f_cost[n] = g_cost[n] + manhattan_dist(n,end)
+                    f_cost[n] = g_cost[n] + manhattan_dist(n,end,xdist,ydist)
                 path_log[n] = current
             
     return ["Error"], 100000
             
-def euclidean_dist(p1,p2):
+def euclidean_dist(p1,p2,xdist,ydist):
     #Calculate the Euclidean distance from point1 to point2:
-    x = 5*(p2[0] - p1[0])
-    y = 5*(p2[1] - p1[1])
+    x = xdist*(p2[0] - p1[0])
+    y = ydist*(p2[1] - p1[1])
     return numpy.sqrt(x**2 + y**2)
     
-def manhattan_dist(p1,p2):
+def manhattan_dist(p1,p2,xdist,ydist):
     #Calculate the Manhattan distance from point1 to point2:
-    return 5*abs(p2[0] - p1[0]) + 5*abs(p2[1] - p1[1])
+    return xdist*abs(p2[0] - p1[0]) + ydist*abs(p2[1] - p1[1])
 
 def find_neighbours(node,space):
     neighbours=set()
@@ -76,7 +76,7 @@ def find_neighbours(node,space):
     return neighbours
 
 
-def astar_3d(space,start,end,eucl=True):
+def astar_3d(space,start,end,eucl=True,xdist=5,ydist=5,zdist=10):
 
     open_nodes = set([start])
     closed_nodes = set()
@@ -84,7 +84,7 @@ def astar_3d(space,start,end,eucl=True):
     path_log = {}
 
     g_cost = {start:0}
-    f_cost = {start:euclidean_dist(start,end)}
+    f_cost = {start:euclidean_dist_3d(start,end,xdist,ydist,zdist)}
 
     while open_nodes:
 
@@ -110,7 +110,7 @@ def astar_3d(space,start,end,eucl=True):
             if space[n] == 1:
                 continue
             if n not in closed_nodes:
-                new_g_cost = g_cost[current] + euclidean_dist_3d(current,n)
+                new_g_cost = g_cost[current] + euclidean_dist_3d(current,n,xdist,ydist,zdist)
                 if n not in open_nodes:
                     open_nodes.add(n)
                                                                   
@@ -120,23 +120,23 @@ def astar_3d(space,start,end,eucl=True):
                   
                 g_cost[n] = new_g_cost
                 if eucl == True:
-                    f_cost[n] = g_cost[n] + euclidean_dist_3d(n,end)
+                    f_cost[n] = g_cost[n] + euclidean_dist_3d(n,end,xdist,ydist,zdist)
                 else:
-                    f_cost[n] = g_cost[n] + manhattan_dist_3d(n,end)
+                    f_cost[n] = g_cost[n] + manhattan_dist_3d(n,end,xdist,ydist,zdist)
                 path_log[n] = current
     
     return ["Error"], 100000
             
-def euclidean_dist_3d(p1,p2):
+def euclidean_dist_3d(p1,p2,xdist,ydist,zdist):
     #Calculate the Euclidean distance from point1 to point2:
-    x = 5*(p2[1] - p1[1])
-    y = 5*(p2[2] - p1[2])
-    z = 10*(p2[0] - p1[0])
+    x = xdist*(p2[1] - p1[1])
+    y = ydist*(p2[2] - p1[2])
+    z = zdist*(p2[0] - p1[0])
     return numpy.sqrt(x**2 + y**2 + z**2)
    
-def manhattan_dist_3d(p1,p2):
+def manhattan_dist_3d(p1,p2,xdist,ydist,zdist):
     #Calculate the Manhattan distance from point1 to point2:
-    return 5*abs(p2[1] - p1[1]) + 5*abs(p2[2] - p1[2]) + 10*abs(p2[0]-p1[0])
+    return xdist*abs(p2[1] - p1[1]) + ydist*abs(p2[2] - p1[2]) + zdist*abs(p2[0]-p1[0])
 
 def find_neighbours_3d(node,space):
     neighbours=set()

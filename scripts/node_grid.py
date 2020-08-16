@@ -7,11 +7,11 @@ import numpy
 
 numpy.set_printoptions(threshold=sys.maxsize)
 
-def new_grid(map_list):
+def new_grid(map_list,reduction=True):
     safe_distance = input("Define the distance between drone and obstacles (in meters): ") 
     print("Generating nodegrid...")
 
-    node_grid = NodeGrid(safe_distance,map_list,False)
+    node_grid = NodeGrid(safe_distance,map_list,reduction)
     the_map = node_grid.generate_grid()
 
     absFilePath = os.path.abspath(__file__)
