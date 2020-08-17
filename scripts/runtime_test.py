@@ -18,6 +18,8 @@ m_out = new_grid(map_pgm)
 
 text_file = open("runtime_results.txt", "w")
 
+print("Running test...")
+
 #Running the 2D A* algorithm with euclidean distance heuristic:
 
 start = (0,0)
@@ -144,8 +146,9 @@ savetxt = text_file.write(". \n . \n")
 savetxt = text_file.write("Route Length LaTeX Table \n \n")
 
 for count in range(len(end_3d)):
-	savetxt = text_file.write("(0,0,0)	& " + str(end_3d[count]) + " & " + str(euc2d[end[count]][0]) + " & " +
-		str(man2d[end[count]][0]) + " & " + str(euc3d[end_3d[count]][0]) + " & " + 	str(man3d[end_3d[count]][0]) + " \\\\ \\hline \n"	)
+	savetxt = text_file.write("(0,0,0)	& " + str(end_3d[count]) + " & " + str(round(euc2d[end[count]][0],2)) + " & " +
+		str(round(man2d[end[count]][0],2)) + " & " + str(round(euc3d[end_3d[count]][0],2)) + " & " + 	
+		str(round(man3d[end_3d[count]][0],2)) + " \\\\ \\hline \n" )
 
 
 savetxt = text_file.write("\n \n Runtime LaTeX Table \n \n")

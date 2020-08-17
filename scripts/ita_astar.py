@@ -129,14 +129,14 @@ def astar_3d(space,start,end,eucl=True,xdist=5,ydist=5,zdist=10):
             
 def euclidean_dist_3d(p1,p2,xdist,ydist,zdist):
     #Calculate the Euclidean distance from point1 to point2:
-    x = xdist*(p2[1] - p1[1])
-    y = ydist*(p2[2] - p1[2])
+    x = xdist*(p2[2] - p1[2])
+    y = ydist*(p2[1] - p1[1])
     z = zdist*(p2[0] - p1[0])
     return numpy.sqrt(x**2 + y**2 + z**2)
    
 def manhattan_dist_3d(p1,p2,xdist,ydist,zdist):
     #Calculate the Manhattan distance from point1 to point2:
-    return xdist*abs(p2[1] - p1[1]) + ydist*abs(p2[2] - p1[2]) + zdist*abs(p2[0]-p1[0])
+    return xdist*abs(p2[2] - p1[2]) + ydist*abs(p2[1] - p1[1]) + zdist*abs(p2[0]-p1[0])
 
 def find_neighbours_3d(node,space):
     neighbours=set()

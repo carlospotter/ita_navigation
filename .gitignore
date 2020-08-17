@@ -3,3 +3,4 @@
 testbed/.vagrant
 scripts/generate_grid.py
 scripts/test_node.py
+scripts/results.py
