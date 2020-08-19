@@ -2,6 +2,7 @@
 
 from ita_astar import astar_2d, astar_3d
 from node_grid import new_grid
+import matplotlib.pyplot as plt
 import timeit
 import sys
 import os
@@ -47,7 +48,7 @@ for x in end :
 		alt = alt + 10
 
 	# times2d.append(runtime)	
-	euc2d[x] = [min(costs), runtime]
+	euc2d[x] = [min(costs), runtime*1000]
 	savetxt = text_file.write(str(x) + ": 2D min cost: " + str(min(costs)) + " 2D time: " + str(runtime) + "\n")
 savetxt = text_file.write(". \n . \n")
 
@@ -75,7 +76,7 @@ for x in end :
 		
 
 	# times2d.append(runtime)	
-	man2d[x] = [min(costs), runtime]
+	man2d[x] = [min(costs), runtime*1000]
 	savetxt = text_file.write(str(x) + ": 2D min cost: " + str(min(costs)) + " 2D time: " + str(runtime) + "\n")
 savetxt = text_file.write(". \n . \n")
 
@@ -105,7 +106,7 @@ for x in end_3d:
 	alt = alt + 10
 
 	# times3d.append(runtime)
-	euc3d[x] = [c, runtime] 
+	euc3d[x] = [c, runtime*1000] 
 	savetxt = text_file.write(str(x) + " 3D cost: " + str(min(costs)) + " 3D time: " + str(runtime) + "\n")
 savetxt = text_file.write(". \n . \n")
 
@@ -135,7 +136,7 @@ for x in end_3d:
 	alt = alt + 10
 
 	# times3d.append(runtime)
-	man3d[x] = [c, runtime] 
+	man3d[x] = [c, runtime*1000] 
 	savetxt = text_file.write(str(x) + " 3D cost: " + str(min(costs)) + " 3D time: " + str(runtime) + "\n")
 savetxt = text_file.write(". \n . \n")
 
@@ -154,19 +155,118 @@ for count in range(len(end_3d)):
 savetxt = text_file.write("\n \n Runtime LaTeX Table \n \n")
 
 for count in range(len(end_3d)):
-	savetxt = text_file.write("(0,0,0)	& " + str(end_3d[count]) + " & " + str(euc2d[end[count]][1]) + " & " +
-		str(man2d[end[count]][1]) + " & " + str(euc3d[end_3d[count]][1]) + " & " + 	str(man3d[end_3d[count]][1]) + " \\\\ \\hline \n"	)
+	savetxt = text_file.write("(0,0,0)	& " + str(end_3d[count]) + " & " + str(round(euc2d[end[count]][1],2)) + " & " +
+		str(round(man2d[end[count]][1],2)) + " & " + str(round(euc3d[end_3d[count]][1],2)) + " & " + 	str(round(man3d[end_3d[count]][1],2)) + " \\\\ \\hline \n"	)
 
 
+# Plots:
+
+# Plot 2D (euc and man):
+time_euc2d = []
+dist_euc2d = []
+time_man2d = []
+dist_man2d = []
+
+for each in euc2d:
+	time_euc2d.append(euc2d[each][1])
+	dist_euc2d.append(euc2d[each][0])
+
+for each in man2d:
+	time_man2d.append(man2d[each][1])
+	dist_man2d.append(man2d[each][0])
+
+fig = plt.figure()
+fg = fig.add_subplot(111)
+
+fg.scatter(dist_euc2d,time_euc2d, c = 'blue', label='Euclidean distance')
+fg.scatter(dist_man2d,time_man2d, c = 'red', marker='v', label='Manhattan distance')
+fg.legend(bbox_to_anchor=(0, 1), loc='upper left', ncol=1)
+fg.set_xlabel("Travelled distance (m)")
+fg.set_ylabel("Execution time (ms)")
 
 
-# av_2d = sum(times2d)/len(times2d)
+plt.savefig('2dresults.png')
 
-# av_3d = sum(times3d)/len(times3d)
+# Plot 3D (euc and man)
 
-# rate = av_3d/av_2d
+time_euc3d = []
+dist_euc3d = []
+time_man3d = []
+dist_man3d = []
 
-# print("2D average time: " + str(av_2d))
-# print("3D average time: " + str(av_3d))
-# print("Rate 3D/2D: " + str(rate))
+for each in euc3d:
+	time_euc3d.append(euc3d[each][1])
+	dist_euc3d.append(euc3d[each][0])
 
+for each in man3d:
+	time_man3d.append(man3d[each][1])
+	dist_man3d.append(man3d[each][0])
+
+fig = plt.figure()
+fg = fig.add_subplot(111)
+
+fg.scatter(dist_euc3d,time_euc3d, c = 'blue',label='Euclidean distance')
+fg.scatter(dist_man3d,time_man3d, c = 'red', marker='v',label='Manhattan distance')
+fg.legend(bbox_to_anchor=(0, 1), loc='upper left', ncol=1)
+fg.set_xlabel("Travelled distance (m)")
+fg.set_ylabel("Execution time (ms)")
+
+plt.savefig('3dresults.png')
+
+# Reduction of the map analysis
+
+end = [(0,10),(0,30),(10,30),(20,10),(20,20),(20,30),(30,10),(30,30),(30,39),
+		(39,10),(39,30),(39,39)]
+
+m_out2 = new_grid(map_pgm, False)
+
+savetxt = text_file.write(". \n . \n")
+savetxt = text_file.write("2D ALGORITHM WITHOUT MAP REDUCTION: \n")
+
+red2d = {}
+for x in end :
+	costs = []
+	alt = 55
+	runtime = 0
+	x1 = x[0]*5+2
+	x2 = x[1]*5+2
+	xn = (x1,x2)
+	
+	for n in range(m_out2.shape[0]):
+		starttimer = timeit.default_timer()
+		result, cost = astar_2d(m_out2[n], start, xn, True, 1, 1)
+		stoptimer = timeit.default_timer()
+		runtime = runtime + (stoptimer - starttimer)
+		starttimer = 0
+		stoptimer = 0
+		c = cost + 2*alt
+		costs.append(c)
+		alt = alt + 10
+
+	# times2d.append(runtime)	
+	red2d[x] = [min(costs), runtime*1000]
+	savetxt = text_file.write(str(x) + ": 2D min cost: " + str(min(costs)) + " 2D time: " + str(runtime) + "\n")
+savetxt = text_file.write(". \n . \n")
+
+time_red = []
+dist_red = []
+
+for each in red2d:
+	time_red.append(red2d[each][1])
+	dist_red.append(red2d[each][0])
+
+fig = plt.figure()
+fg = fig.add_subplot(111)
+
+fg.scatter(dist_euc2d,time_euc2d, c = 'blue',label='Reduced map')
+fg.scatter(dist_red,time_red, c = 'red', marker='v', label="Original map")
+fg.legend(bbox_to_anchor=(0, 1), loc='upper left', ncol=1)
+fg.set_xlabel("Travelled distance (m)")
+fg.set_ylabel("Execution time (ms)")
+
+plt.savefig('redresults.png')
+
+for count in range(len(end)):
+	savetxt = text_file.write("(0,0,0)	& " + str(end[count]) + " & " + str(round(euc2d[end[count]][0],2)) + " & " +
+		str(round(red2d[end[count]][0],2)) + " & " + str(round(euc2d[end[count]][1],2)) + " & " + 	
+		str(round(red2d[end[count]][1],2)) + " \\\\ \\hline \n" )
