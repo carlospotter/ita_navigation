@@ -19,10 +19,10 @@ def print_3d_map(map_matrix):
     for z in range(zl):
 	    for x in range(xl):
 		    for y in range(yl):
-			    if map_matrix[z, x, y] == 1:
-				    ax.scatter(y, 39-x, z, zdir='z', c= 'red')
-			    if map_matrix[z, x, y] == 0:
-				    ax.scatter(y, 39-x, z, zdir='z', c = 'green')
+			    # if map_matrix[z, x, y] == 1:
+				#     ax.scatter(y, 39-x, z, zdir='z', c= 'red')
+			    if map_matrix[z, x, y] == 2:
+				    ax.scatter(y, 39-x, z, zdir='z', c = 'blue')
 
     absFilePath = os.path.abspath(__file__)
     os.chdir(os.path.dirname(absFilePath))
@@ -43,6 +43,8 @@ def print_2d_map(map_matrix):
         for y in range (yl):
             if map_matrix[x,y] == 1:
                 ax.scatter(y, 39-x, c = 'red')
+            if map_matrix[x,y] == 2:
+                ax.scatter(y, 39-x, c = 'blue')
             if map_matrix[x,y] == 0:
                 ax.scatter(y, 39-x, c = 'green')
     

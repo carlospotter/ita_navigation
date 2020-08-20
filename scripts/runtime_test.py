@@ -17,7 +17,7 @@ map_pgm = ["data/map55.pgm", "data/map65.pgm", "data/map75.pgm", "data/map85.pgm
 
 m_out = new_grid(map_pgm)
 
-text_file = open("runtime_results.txt", "w")
+text_file = open("/results/runtime_results.txt", "w")
 
 print("Running test...")
 
@@ -29,7 +29,6 @@ end = [(0,10),(0,30),(10,30),(20,10),(20,20),(20,30),(30,10),(30,30),(30,39),
 
 savetxt = text_file.write("2D ALGORITHM WITH EUCLIDEAN DISTANCE HEURISTIC: \n")
 
-times2d = []
 euc2d = {}
 for x in end :
 	costs = []
@@ -56,7 +55,6 @@ savetxt = text_file.write(". \n . \n")
 
 savetxt = text_file.write("2D ALGORITHM WITH MANHATTAN DISTANCE HEURISTIC: \n")
 
-times2d = []
 man2d = {}
 for x in end :
 	costs = []
@@ -89,7 +87,6 @@ end_3d = [(0,0,10),(0,0,30),(0,10,30),(0,20,10),(0,20,20),(0,20,30),(0,30,10),(0
 
 
 savetxt = text_file.write("3D ALGORITHM WITH EUCLIDEAN DISTANCE HEURISTIC: \n")
-times3d = []
 euc3d = {}
 for x in end_3d:
 	costs = []
@@ -119,7 +116,6 @@ end_3d = [(0,0,10),(0,0,30),(0,10,30),(0,20,10),(0,20,20),(0,20,30),(0,30,10),(0
 
 
 savetxt = text_file.write("3D ALGORITHM WITH MANHATTAN DISTANCE HEURISTIC: \n")
-times3d = []
 man3d = {}
 for x in end_3d:
 	costs = []
@@ -185,7 +181,7 @@ fg.set_xlabel("Travelled distance (m)")
 fg.set_ylabel("Execution time (ms)")
 
 
-plt.savefig('2dresults.png')
+plt.savefig('/results/2dresults.png')
 
 # Plot 3D (euc and man)
 
@@ -211,7 +207,7 @@ fg.legend(bbox_to_anchor=(0, 1), loc='upper left', ncol=1)
 fg.set_xlabel("Travelled distance (m)")
 fg.set_ylabel("Execution time (ms)")
 
-plt.savefig('3dresults.png')
+plt.savefig('/results/3dresults.png')
 
 # Reduction of the map analysis
 
@@ -264,9 +260,47 @@ fg.legend(bbox_to_anchor=(0, 1), loc='upper left', ncol=1)
 fg.set_xlabel("Travelled distance (m)")
 fg.set_ylabel("Execution time (ms)")
 
-plt.savefig('redresults.png')
+plt.savefig('/results/redresults.png')
 
 for count in range(len(end)):
 	savetxt = text_file.write("(0,0,0)	& " + str(end[count]) + " & " + str(round(euc2d[end[count]][0],2)) + " & " +
 		str(round(red2d[end[count]][0],2)) + " & " + str(round(euc2d[end[count]][1],2)) + " & " + 	
 		str(round(red2d[end[count]][1],2)) + " \\\\ \\hline \n" )
+
+	
+# Average time and distance:
+
+# Times:
+avg_time_euc2d = numpy.average(time_euc2d)
+avg_time_euc3d = numpy.average(time_euc3d)
+avg_time_man2d = numpy.average(time_man2d)
+avg_time_man3d = numpy.average(time_man3d)
+avg_time_red = numpy.average(time_red)
+
+# Distances:
+avg_dist_euc2d = numpy.average(dist_euc2d)
+avg_dist_euc3d = numpy.average(dist_euc3d)
+avg_dist_man2d = numpy.average(dist_man2d)
+avg_dist_man3d = numpy.average(dist_man3d)
+avg_dist_red = numpy.average(dist_red)
+
+# Comparisons:
+
+savetxt = text_file.write("\n \n dist comparison 2d: \n")
+savetxt = text_file.write(str(100*avg_dist_man2d/avg_dist_euc2d))
+
+savetxt = text_file.write("\n \n dist comparison 3d: \n")
+savetxt = text_file.write(str(100*avg_dist_man3d/avg_dist_euc3d))
+
+savetxt = text_file.write("\n \n time comparison 2d:\n")
+savetxt = text_file.write(str(avg_time_euc2d/avg_time_man2d))
+
+savetxt = text_file.write("\n \n time comparison 3d:\n")
+savetxt = text_file.write(str(avg_time_euc3d/avg_time_man3d))
+
+savetxt = text_file.write("\n \n time comparison red:\n")
+savetxt = text_file.write(str(avg_time_red/avg_time_euc2d))
+
+savetxt = text_file.write("\n \n dist comparison red:\n")
+savetxt = text_file.write(str(100*avg_dist_euc2d/avg_dist_red))
+
