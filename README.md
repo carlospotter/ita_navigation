@@ -10,3 +10,5 @@ In order to execute the package, the following steps are required:
 3. Run the _nav_2d.py_ or _nav_3d.py_ codes in the _ita_navigation_ package for 2D or 3D A* algorithm, respectively.
 
 A Virtual Machine Testbed for _ita_navigation_ is available in the testbed folder.
+
+[2D navigation demo](https://youtu.be/lCJoD_fwUbw)
