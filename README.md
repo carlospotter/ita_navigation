@@ -11,4 +11,9 @@ In order to execute the package, the following steps are required:
 
 A Virtual Machine Testbed for _ita_navigation_ is available in the testbed folder.
 
-[2D navigation demo](https://youtu.be/aGxPD6Bk608)
+---
+## 2D navigation demo
+
+[![2D navigation demo](https://img.youtube.com/vi/aGxPD6Bk608/0.jpg)](https://www.youtube.com/watch?v=aGxPD6Bk608)
+
+
