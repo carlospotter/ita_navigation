@@ -1,5 +1,7 @@
 # ita_navigation
 
+[![DOI](https://zenodo.org/badge/265566854.svg)](https://zenodo.org/badge/latestdoi/265566854)
+
 Path planning and drone command for AR.Drone. This work is part of the construction of A UAS Traffic Management simulation platform using the Robot Operating System (ROS).
 
 The package requires the [_tum_simulator_](https://github.com/carlospotter/tum_simulator) and the [_pid_control_ardrone_](https://github.com/carlospotter/pid_control_ardrone) packages.
